@@ -1,21 +1,26 @@
 //declare global variables
-var timeBlock = $(".timeBlock");
+var timeBlock = $(".time-block");
 var saveBtn = $(".saveBtn");
 
 //create a moment.date to read the current date/time and display it to the currentDay id
-var todayDate = moment().format("dddd, MMM Do YYYY");
+var todayDate = moment().format("dddd, MMM Do YYYY, h MM A");
 $("#currentDay").text(todayDate);
 
-//create a function to track the current time and compare it to the time blocks.
+//create a function to track the current time and compare it to the time blocks. Then create a conditional statement to apply color coding accordingly.
 function timeTracker() {
-  var hourDay = moment().hour();
+  var hourOfDay = moment().hour();
 
-  $(".timeBlock").each(function () {
-    if (this < hourDay) {
+  //loop through each of the time blocks and separate the hour from the id so that just the number remains to compare to the time of day.
+  $(".time-block").each(function () {
+    var blockHour = parseInt($(this).attr("id").split("hour")[1]);
+    console.log(blockHour, hourOfDay);
+
+    //create conditional statement to actually compare the time of day to the time block. Set the colors for each time whether it be ppast, present or future.
+    if (blockHour < hourOfDay) {
       $(this).removeClass("future");
       $(this).removeClass("present");
       $(this).addClass("past");
-    } else if (this === hourDay) {
+    } else if (blockHour === hourOfDay) {
       $(this).removeClass("past");
       $(this).removeClass("future");
       $(this).addClass("present");
@@ -29,9 +34,6 @@ function timeTracker() {
 
 //create function for the save button to store values in local storage.
 saveBtn.on("click", function () {
-  var text = $(this).siblings(".description").val();
-  var time = $(this).parent().attr("class");
-
   // Save text in local storage
   localStorage.setItem(time, text);
 });
