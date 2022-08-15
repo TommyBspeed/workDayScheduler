@@ -34,28 +34,37 @@ function timeTracker() {
 
 //create function for the save button to store values in local storage.
 saveBtn.on("click", function () {
-  // Save text in local storage
-  localStorage.setItem(time, text);
+  //check if the console is reognizing the use of (this)
+  console.log(this);
+  // Set variable for time to reference the id for the save buttons parent container and console log it to confirm the readout
+  var time = $(this).parent().attr("id");
+  console.log(time);
+
+  //set the variable of task to look for a sibling of saveBtn with the class of "description" and the value input into that field.
+  var task = $(this).siblings(".description").val();
+  console.log(task);
+
+  localStorage.setItem(time, task);
 });
 //grab data from local storage if any has been saved.
-$(".hour9 .description").val(localStorage.getItem("hour8"));
+$("#hour9 .description").val(localStorage.getItem("hour8"));
 
-$(".hour10 .description").val(localStorage.getItem("hour10"));
+$("#hour10 .description").val(localStorage.getItem("hour10"));
 
-$(".hour11 .description").val(localStorage.getItem("hour11"));
+$("#hour11 .description").val(localStorage.getItem("hour11"));
 
-$(".hour12 .description").val(localStorage.getItem("hour12"));
+$("#hour12 .description").val(localStorage.getItem("hour12"));
 
-$(".hour13 .description").val(localStorage.getItem("hour13"));
+$("#hour13 .description").val(localStorage.getItem("hour13"));
 
-$(".hour14 .description").val(localStorage.getItem("hour14"));
+$("#hour14 .description").val(localStorage.getItem("hour14"));
 
-$(".hour15 .description").val(localStorage.getItem("hour15"));
+$("#hour15 .description").val(localStorage.getItem("hour15"));
 
-$(".hour16 .description").val(localStorage.getItem("hour16"));
+$("#hour16 .description").val(localStorage.getItem("hour16"));
 
-$(".hour17 .description").val(localStorage.getItem("hour17"));
+$("#hour17 .description").val(localStorage.getItem("hour17"));
 
-$(".hour18 .description").val(localStorage.getItem("hour18"));
+$("#hour18 .description").val(localStorage.getItem("hour18"));
 
 timeTracker();
