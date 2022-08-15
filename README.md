@@ -13,6 +13,6 @@ Here is a photo of the work day scheduler as well as a link to the site to run i
 
 Link to the github: https://github.com/TommyBspeed/workDayScheduler
 
-Link to the webpage:
+Link to the webpage: https://tommybspeed.github.io/workDayScheduler/
 
 ![This is a screenshot of the Workday Scheduler.](<./assets/images/Screen Shot 2022-08-15 at 4.23.38 PM.png>)
