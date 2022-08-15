@@ -2,19 +2,20 @@
 var timeBlock = $(".timeBlock");
 var saveBtn = $(".saveBtn");
 
-//create a native date to read the current date/time and display it to the currentDay id
-const dayNow = new Date();
-let text = dayNow.toString();
-document.getElementById("currentDay").textContent = text;
+//create a moment.date to read the current date/time and display it to the currentDay id
+var todayDate = moment().format("dddd, MMM Do YYYY");
+$("#currentDay").text(todayDate);
 
 //create a function to track the current time and compare it to the time blocks.
 function timeTracker() {
-  var lineTime = $(".time-block").each(function () {
-    if (lineTime < dayNow) {
+  var hourDay = moment().hour();
+
+  $(".timeBlock").each(function () {
+    if (this < hourDay) {
       $(this).removeClass("future");
       $(this).removeClass("present");
       $(this).addClass("past");
-    } else if (lineTime === dayNow) {
+    } else if (this === hourDay) {
       $(this).removeClass("past");
       $(this).removeClass("future");
       $(this).addClass("present");
@@ -54,3 +55,5 @@ $(".hour16 .description").val(localStorage.getItem("hour16"));
 $(".hour17 .description").val(localStorage.getItem("hour17"));
 
 $(".hour18 .description").val(localStorage.getItem("hour18"));
+
+timeTracker();
